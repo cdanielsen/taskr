@@ -1,11 +1,11 @@
+// Connection module
 
-
-function PivotalTrackerConnection(projectID, xTrackerToken) {
+var PivotalTrackerConnection = function (projectID, xTrackerToken) {
   this.ProjectID = projectID;
   this.XTrackerToken = xTrackerToken;
   this.BaseURL = "https://www.pivotaltracker.com/services/v5/projects/" + projectID;
   this.projectMembers = "";
-}
+};
 
 PivotalTrackerConnection.prototype.addTask = function(storyID, task) {
   var client = new XMLHttpRequest();
@@ -57,3 +57,5 @@ PivotalTrackerConnection.prototype.executeGet = function(url) {
     }
   }
 };
+
+module.exports = PivotalTrackerConnection;

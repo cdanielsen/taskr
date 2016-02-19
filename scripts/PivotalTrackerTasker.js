@@ -1,4 +1,6 @@
-function executeAddTask(pivotalData) {
+var pivotal = require('./PivotalTrackerConnection');
+
+module.exports = function executeAddTask(pivotalData) {
 	var apiToken = "SECRET";
 	var pivotal = new PivotalTrackerConnection(pivotalData.projectID, apiToken);
 
@@ -10,4 +12,4 @@ function executeAddTask(pivotalData) {
 		task = taskArray[i];
 		pivotal.addTask(pivotalData.storyID, task);
 	}
-}
+};

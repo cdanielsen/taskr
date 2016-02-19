@@ -2,9 +2,15 @@
   "name": "taskr",
   "version": "0.0.1",
   "description": "A simple tool to add default tasks to Pivotal stories",
-  "main": "PivotalTrackerConnection.js",
+  "main": "app.js",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/cdanielsen/trackr.git"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run bify & chrome tasker.html",
+    "bify": "browserify app.js -o ./scripts/bundle.js"
   },
   "keywords": [
     "pivotal"
@@ -12,6 +18,8 @@
   "author": "David Slick & Christian Danielsen",
   "license": "ISC",
   "dependencies": {
+    "angular": "1.4.0",
+    "browser-request": "^0.3.3",
     "browserify": "^13.0.0"
   }
 }
