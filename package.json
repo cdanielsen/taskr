@@ -1,0 +1,17 @@
+{
+  "name": "taskr",
+  "version": "0.0.1",
+  "description": "A simple tool to add default tasks to Pivotal stories",
+  "main": "PivotalTrackerConnection.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pivotal"
+  ],
+  "author": "David Slick & Christian Danielsen",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^13.0.0"
+  }
+}
