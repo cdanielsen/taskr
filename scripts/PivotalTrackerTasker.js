@@ -1,5 +1,5 @@
 function executeAddTask(pivotalData) {
-	var apiToken = "3b08df767e6bc16b55952a00a8e7d97d";
+	var apiToken = "SECRET";
 	var pivotal = new PivotalTrackerConnection(pivotalData.projectID, apiToken);
 
 	var task = "";
