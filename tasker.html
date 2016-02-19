@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+	<script src="PivotalTrackerConnection.js"></script>
+	<script src="PivotalTrackerTasker.js"></script>
+</head>
+<body ng-app="myapp">
+	<div ng-controller="TaskFormController" >
+    Pivotal Tracker Tasker:
+	<form ng-submit="pivotalTaskForm.submitTheForm()">
+	Story ID: 
+    <input type="text" id="storyID" size="15" ng-model="pivotalTaskForm.storyID"><br/>
+    <!--
+	API Token: 
+	<input type="text" id="apiToken" ng-model="pivotalTaskForm.apiToken"><br/>
+    -->
+	Project: 
+	<select ng-model="pivotalTaskForm.project">
+      <option value="1101864">QA</option>
+      <option value="1082120">Channel</option>
+	  <option value="1028402">Data</option>
+      <option value="873433">Dev Support</option>
+      <option value="1084250">Internal</option>
+	  <option value="994814">Retail</option>
+	  <option value="1084254">Third Party</option>	  
+    </select><br/>
+    Task List:<br/> 
+    <textarea id="taskList" rows="10" cols="50" ng-model="pivotalTaskForm.taskList"></textarea>
+    <br/>
+    <br>
+    <input type="submit" value="Submit">
+      <label id="taskAddStatus">{{successMsg}}</label>
+  </form>
+  <br><br>
+
+</div>
+
+<script>
+  angular.module("myapp", [])
+     .controller("TaskFormController", function($scope, $http) {
+        $scope.pivotalTaskForm = {};
+		$scope.pivotalTaskForm.storyID = "";
+		//$scope.pivotalTaskForm.apiToken = "";
+		$scope.pivotalTaskForm.project = 1084250;	
+		$scope.pivotalTaskForm.taskList = "QA: Test Task\nDEV: Unit Test";
+
+     $scope.pivotalTaskForm.submitTheForm = function(item, event) {
+       var formData = {
+          storyID : $scope.pivotalTaskForm.storyID,
+		  projectID   :	$scope.pivotalTaskForm.project,
+		  taskList   :	$scope.pivotalTaskForm.taskList,
+       };
+
+       executeAddTask(formData);
+
+/*	   if ("success" === executeAddTask(formData)) {
+	   		$scope.pivotalTaskForm.taskAddStatus.successMsg = "Task submitted successfully!";
+	   }
+	   else {
+	   		$scope.pivotalTaskForm.taskAddStatus.successMsg = "Task submission unsuccessful";
+	   }
+  */   }
+
+  });
+</script>
+</body>
+</html>
